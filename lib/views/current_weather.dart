@@ -6,7 +6,7 @@ import 'space_needle_in_a_circle.dart';
 import 'weather_condition_widget.dart';
 
 class CurrentWeather extends StatelessWidget {
-  const CurrentWeather({super.key, this.tempInfahrenheit=420, this.condition=WeatherCondition.sunny});
+  const CurrentWeather({super.key, this.tempInfahrenheit=42, this.condition=WeatherCondition.gloomy});
 
   final WeatherCondition condition;
   final int tempInfahrenheit;
@@ -41,7 +41,7 @@ class CurrentWeather extends StatelessWidget {
       WeatherCondition.gloomy => Colors.grey[800]!,
       WeatherCondition.sunny => Colors.yellow[600]!,
       _ => Colors.blue[800]!
-  };
+    };
   }
 
 }
