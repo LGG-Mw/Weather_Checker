@@ -5,7 +5,8 @@ class SpaceNeedleInACircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO(you): return a Widget that shows the spaceneedle.jpeg (in assets) and clips it to be a circle 
-    // hint: check out the ClipOval Widget
+    return ClipOval(
+      child: Image.asset('assets/spaceneedle.jpeg', width: 400, height: 400, fit: BoxFit.cover,),
+    );
   }
 }

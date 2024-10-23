@@ -6,7 +6,7 @@ import 'space_needle_in_a_circle.dart';
 import 'weather_condition_widget.dart';
 
 class CurrentWeather extends StatelessWidget {
-  const CurrentWeather({super.key, this.tempInfahrenheit=42, this.condition=WeatherCondition.rainy});
+  const CurrentWeather({super.key, this.tempInfahrenheit=420, this.condition=WeatherCondition.sunny});
 
   final WeatherCondition condition;
   final int tempInfahrenheit;
@@ -33,9 +33,15 @@ class CurrentWeather extends StatelessWidget {
     );
   }
 
-  // TODO(you): Write this method
+  // Takes in  WeatherCondition parameter and return a color accordingly
+  // WeatherCondition condition: the weather condition
+  // return: return a color accordinly
   Color _backgroundColorForCondition(WeatherCondition condition){
-
+    return switch (condition) {
+      WeatherCondition.gloomy => Colors.grey[800]!,
+      WeatherCondition.sunny => Colors.yellow[600]!,
+      _ => Colors.blue[800]!
+  };
   }
 
 }

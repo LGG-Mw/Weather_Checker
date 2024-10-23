@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 class BigTemp extends StatelessWidget {
   final int tempInfahrenheit;
-  const // TODO(you): write a constructor (hint: look at the other views in this directory)
+  const BigTemp(this.tempInfahrenheit, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TODO(you): return a widget or widget tree that shows the temperature in big text
-
+    return Text('$tempInfahrenheit°', style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),);
   }
 }

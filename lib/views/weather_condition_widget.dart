@@ -8,8 +8,16 @@ class WeatherConditionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconToShow = Icons.__________ // TODO(you): Choose an appropriate icon based on condition
-    final textToShow = // TODO(you): Generate appropriate text to show based on condition 
+    final iconToShow = switch(condition) {
+      WeatherCondition.gloomy => Icons.cloud,
+      WeatherCondition.sunny => Icons.sunny,
+      _ => Icons.water_drop_rounded,
+    };
+    final textToShow = switch(condition) {
+      WeatherCondition.gloomy => 'Gloomy',
+      WeatherCondition.sunny => 'Sunny',
+      _ => 'Rainy',
+    };
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -17,7 +25,7 @@ class WeatherConditionWidget extends StatelessWidget {
         Icon(iconToShow),
         Text(
           textToShow,
-          style: TextStyle(fontSize: 24)
+          style: const TextStyle(fontSize: 24)
         ),
       ]
     );
