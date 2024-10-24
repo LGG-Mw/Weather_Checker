@@ -107,8 +107,8 @@ class _LiveWeatherState extends State<LiveWeather> {
   Color _backgroundColorForCondition(WeatherCondition condition){
     return switch (condition) {
       WeatherCondition.gloomy => Colors.grey[350]!,
-      WeatherCondition.sunny => Colors.yellow[600]!,
-      _ => Colors.blue[800]!
+      WeatherCondition.sunny => const Color.fromARGB(255, 255, 227, 101)!,
+      _ => const Color.fromARGB(255, 174, 209, 249)!
     };
   }
 }

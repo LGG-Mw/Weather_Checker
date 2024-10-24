@@ -6,6 +6,6 @@ class BigTemp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('$tempInfahrenheit°', style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),);
+    return Text('$tempInfahrenheit°', style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold,),);
   }
 }
