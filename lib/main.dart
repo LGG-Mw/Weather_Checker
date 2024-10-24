@@ -4,7 +4,7 @@ import 'package:weather/providers/weather_provider.dart';
 import 'package:weather/views/live_weather.dart';
 
 void main() {
-  runApp(WeatherApp());
+  runApp(const WeatherApp());
 }
 
 class WeatherApp extends StatelessWidget {

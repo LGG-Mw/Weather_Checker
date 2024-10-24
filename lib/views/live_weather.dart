@@ -23,14 +23,14 @@ class _LiveWeatherState extends State<LiveWeather> {
   Timer? _weatherCheckerTimer;
 
   @override
-  initState(){
+  void initState(){
     super.initState();
     // access the provider for initiating
     final singleUseWeatherProvider = Provider.of<WeatherProvider>(context, listen: false); //false because this is only used when initiating
     _createAndFetchWeather(singleUseWeatherProvider);
     _weatherCheckerTimer = Timer.periodic(
-      Duration(seconds: 60), 
-      (_weatherCheckerTimer){_createAndFetchWeather(singleUseWeatherProvider);}
+      const Duration(seconds: 60), 
+      (weatherCheckerTimer){_createAndFetchWeather(singleUseWeatherProvider);}
     );
   }
 
@@ -55,6 +55,7 @@ class _LiveWeatherState extends State<LiveWeather> {
   Widget build(BuildContext context) {
     return Consumer<WeatherProvider>(
       builder: (context, provider, other){
+        // return the information if fetched succesfully
         if (provider.fetched){
           return Scaffold(
             backgroundColor: _backgroundColorForCondition(provider.condition),
@@ -77,10 +78,12 @@ class _LiveWeatherState extends State<LiveWeather> {
               )
             )
           );
+        // display loading screen if still fetching
         } else if (provider.error == null){
-          return Scaffold(
+          return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
+        // display failed message if fetced unsucessfully
         } else {
           return Scaffold(
             backgroundColor: Colors.redAccent, // A red background to indicate error

@@ -47,8 +47,9 @@ class WeatherChecker {
   WeatherCondition _shortForecastToCondition(String shortForecast) {
     final lowercased = shortForecast.toLowerCase();
     if (lowercased.startsWith('rain')) return WeatherCondition.rainy;
-    if (lowercased.startsWith('sun') || lowercased.startsWith('partly'))
+    if (lowercased.startsWith('sun') || lowercased.startsWith('partly')) {
       return WeatherCondition.sunny;
+    }
     return WeatherCondition.gloomy;
   }
 }
