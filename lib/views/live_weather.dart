@@ -9,7 +9,6 @@ import '../weather_conditions.dart';
 import 'big_temp.dart';
 import 'space_needle_in_a_circle.dart';
 import 'weather_condition_widget.dart';
-import 'package:http/http.dart' as http;
 
 // class that gets and updates real time weather data
 class LiveWeather extends StatefulWidget {
@@ -67,7 +66,10 @@ class _LiveWeatherState extends State<LiveWeather> {
                     const Padding(
                       padding:  EdgeInsets.all(16.0)
                     ),
-                    const SpaceNeedleInACircle(),
+                    Semantics(
+                      label: 'Space Needle',
+                      child: const SpaceNeedleInACircle(),
+                    ),
                     BigTemp(provider.tempInfahrenheit),
                     WeatherConditionWidget(provider.condition),
                   ]
@@ -75,9 +77,19 @@ class _LiveWeatherState extends State<LiveWeather> {
               )
             )
           );
-        } else {
+        } else if (provider.error == null){
           return Scaffold(
             body: Center(child: CircularProgressIndicator()),
+          );
+        } else {
+          return Scaffold(
+            backgroundColor: Colors.redAccent, // A red background to indicate error
+            body: Center(
+              child: Text(
+                provider.error!, // Show the error message
+                style: const TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ),
           );
         }
       }   
@@ -91,7 +103,7 @@ class _LiveWeatherState extends State<LiveWeather> {
   // return: return a color accordinly
   Color _backgroundColorForCondition(WeatherCondition condition){
     return switch (condition) {
-      WeatherCondition.gloomy => Colors.grey[800]!,
+      WeatherCondition.gloomy => Colors.grey[350]!,
       WeatherCondition.sunny => Colors.yellow[600]!,
       _ => Colors.blue[800]!
     };

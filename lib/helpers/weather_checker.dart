@@ -21,7 +21,7 @@ class WeatherChecker {
       final gridParsed = (jsonDecode(gridResponse.body));
       final String? forecastURL = gridParsed['properties']?['forecast'];
       if (forecastURL == null) {
-        // do nothing
+        throw Error();
       } else {
         final weatherResponse = await client.get(Uri.parse(forecastURL));
         final weatherParsed = jsonDecode(weatherResponse.body);
@@ -38,8 +38,7 @@ class WeatherChecker {
         }
       }
     } catch (error) {
-      // TODO(you): Find a way to have the UI let the user know that we haven't been able to update data successfully
-      
+      weatherProvider.setError('Update unsuccessful');
     } finally {
       client.close();
     }
