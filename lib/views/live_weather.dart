@@ -30,7 +30,7 @@ class _LiveWeatherState extends State<LiveWeather> {
     final singleUseWeatherProvider = Provider.of<WeatherProvider>(context, listen: false); //false because this is only used when initiating
     _createAndFetchWeather(singleUseWeatherProvider);
     _weatherCheckerTimer = Timer.periodic(
-      Duration(seconds: 1), 
+      Duration(seconds: 60), 
       (_weatherCheckerTimer){_createAndFetchWeather(singleUseWeatherProvider);}
     );
   }
